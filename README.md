@@ -17,15 +17,35 @@ vagrant@vpn-center:~$ sudo -i
 root@vpn-center:~# tcpdump -nei enp0s8
 tcpdump: verbose output suppressed, use -v or -vv for full protocol decode
 listening on enp0s8, link-type EN10MB (Ethernet), capture size 262144 bytes
-20:47:06.153768 08:00:27:86:53:d9 > 08:00:27:ca:ec:cc, ethertype IPv6 (0x86dd), length 190: 2001:db8::20.37031 > 2001:db8::10.50000: UDP, length 128
-20:47:06.153914 08:00:27:ca:ec:cc > 08:00:27:86:53:d9, ethertype IPv6 (0x86dd), length 190: 2001:db8::10.50000 > 2001:db8::20.37031: UDP, length 128
-20:47:06.660762 08:00:27:15:d9:a6 > 08:00:27:ca:ec:cc, ethertype IPv6 (0x86dd), length 190: 2001:db8::30.33135 > 2001:db8::10.50001: UDP, length 128
-20:47:06.660866 08:00:27:ca:ec:cc > 08:00:27:15:d9:a6, ethertype IPv6 (0x86dd), length 190: 2001:db8::10.50001 > 2001:db8::30.33135: UDP, length 128
-20:47:07.163215 08:00:27:86:53:d9 > 08:00:27:ca:ec:cc, ethertype IPv6 (0x86dd), length 190: 2001:db8::20.37031 > 2001:db8::10.50000: UDP, length 128
-20:47:07.163335 08:00:27:ca:ec:cc > 08:00:27:86:53:d9, ethertype IPv6 (0x86dd), length 190: 2001:db8::10.50000 > 2001:db8::20.37031: UDP, length 128
-20:47:07.779998 08:00:27:15:d9:a6 > 08:00:27:ca:ec:cc, ethertype IPv6 (0x86dd), length 190: 2001:db8::30.33135 > 2001:db8::10.50001: UDP, length 128
-20:47:07.780139 08:00:27:ca:ec:cc > 08:00:27:15:d9:a6, ethertype IPv6 (0x86dd), length 190: 2001:db8::10.50001 > 2001:db8::30.33135: UDP, length 128
-20:47:08.187423 08:00:27:86:53:d9 > 08:00:27:ca:ec:cc, ethertype IPv6 (0x86dd), length 190: 2001:db8::20.37031 > 2001:db8::10.50000: UDP, length 128
+16:14:59.300296 08:00:27:86:53:d9 > 08:00:27:ca:ec:cc, ethertype IPv6 (0x86dd), length 190: 2001:db8::20.37031 > 2001:db8::10.50000: UDP, length 128
+16:14:59.300426 08:00:27:ca:ec:cc > 08:00:27:86:53:d9, ethertype IPv6 (0x86dd), length 190: 2001:db8::10.50000 > 2001:db8::20.37031: UDP, length 128
+16:14:59.740590 08:00:27:15:d9:a6 > 08:00:27:ca:ec:cc, ethertype IPv6 (0x86dd), length 190: 2001:db8::30.33135 > 2001:db8::10.50001: UDP, length 128
+16:14:59.740733 08:00:27:ca:ec:cc > 08:00:27:15:d9:a6, ethertype IPv6 (0x86dd), length 190: 2001:db8::10.50001 > 2001:db8::30.33135: UDP, length 128
+16:15:00.330795 08:00:27:86:53:d9 > 08:00:27:ca:ec:cc, ethertype IPv6 (0x86dd), length 190: 2001:db8::20.37031 > 2001:db8::10.50000: UDP, length 128
+16:15:00.330937 08:00:27:ca:ec:cc > 08:00:27:86:53:d9, ethertype IPv6 (0x86dd), length 190: 2001:db8::10.50000 > 2001:db8::20.37031: UDP, length 128
+16:15:00.773626 08:00:27:15:d9:a6 > 08:00:27:ca:ec:cc, ethertype IPv6 (0x86dd), length 190: 2001:db8::30.33135 > 2001:db8::10.50001: UDP, length 128
+16:15:00.773796 08:00:27:ca:ec:cc > 08:00:27:15:d9:a6, ethertype IPv6 (0x86dd), length 190: 2001:db8::10.50001 > 2001:db8::30.33135: UDP, length 128
+16:15:01.477237 08:00:27:86:53:d9 > 08:00:27:ca:ec:cc, ethertype IPv6 (0x86dd), length 190: 2001:db8::20.37031 > 2001:db8::10.50000: UDP, length 128
+16:15:01.477420 08:00:27:ca:ec:cc > 08:00:27:86:53:d9, ethertype IPv6 (0x86dd), length 190: 2001:db8::10.50000 > 2001:db8::20.37031: UDP, length 128
+<snip>
+```
+
+```
+$ vagrant ssh vpn-center
+vagrant@vpn-center:~$ sudo -i
+root@vpn-center:~# tcpdump -nei br-internal
+tcpdump: verbose output suppressed, use -v or -vv for full protocol decode
+listening on br-internal, link-type EN10MB (Ethernet), capture size 262144 bytes
+16:14:59.300369 02:5e:81:1e:60:b4 > 92:57:1d:6b:3b:d9, ethertype IPv4 (0x0800), length 98: 100.64.0.20 > 100.64.0.10: ICMP echo request, id 5, seq 1, length 64
+16:14:59.300394 92:57:1d:6b:3b:d9 > 02:5e:81:1e:60:b4, ethertype IPv4 (0x0800), length 98: 100.64.0.10 > 100.64.0.20: ICMP echo reply, id 5, seq 1, length 64
+16:14:59.740680 7a:2d:61:e3:3e:c0 > 92:57:1d:6b:3b:d9, ethertype IPv4 (0x0800), length 98: 100.64.0.30 > 100.64.0.10: ICMP echo request, id 5, seq 1, length 64
+16:14:59.740713 92:57:1d:6b:3b:d9 > 7a:2d:61:e3:3e:c0, ethertype IPv4 (0x0800), length 98: 100.64.0.10 > 100.64.0.30: ICMP echo reply, id 5, seq 1, length 64
+16:15:00.330888 02:5e:81:1e:60:b4 > 92:57:1d:6b:3b:d9, ethertype IPv4 (0x0800), length 98: 100.64.0.20 > 100.64.0.10: ICMP echo request, id 5, seq 2, length 64
+16:15:00.330918 92:57:1d:6b:3b:d9 > 02:5e:81:1e:60:b4, ethertype IPv4 (0x0800), length 98: 100.64.0.10 > 100.64.0.20: ICMP echo reply, id 5, seq 2, length 64
+16:15:00.773719 7a:2d:61:e3:3e:c0 > 92:57:1d:6b:3b:d9, ethertype IPv4 (0x0800), length 98: 100.64.0.30 > 100.64.0.10: ICMP echo request, id 5, seq 2, length 64
+16:15:00.773744 92:57:1d:6b:3b:d9 > 7a:2d:61:e3:3e:c0, ethertype IPv4 (0x0800), length 98: 100.64.0.10 > 100.64.0.30: ICMP echo reply, id 5, seq 2, length 64
+16:15:01.477335 02:5e:81:1e:60:b4 > 92:57:1d:6b:3b:d9, ethertype IPv4 (0x0800), length 98: 100.64.0.20 > 100.64.0.10: ICMP echo request, id 5, seq 3, length 64
+16:15:01.477364 92:57:1d:6b:3b:d9 > 02:5e:81:1e:60:b4, ethertype IPv4 (0x0800), length 98: 100.64.0.10 > 100.64.0.20: ICMP echo reply, id 5, seq 3, length 64
 <snip>
 ```
 
